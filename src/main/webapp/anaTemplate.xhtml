@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <title>Facelets Template</title>
+    </h:head>
+
+    <h:body>
+
+        <p:layout fullPage="true">
+            <p:layoutUnit position="north" size="150" resizable="true"
+                          closable="true" collapsible="true">
+                 <ui:insert name="top">
+                     <table border="1" width="100%" >
+                         <tr>
+                             <td width="20%">
+                                 <p:graphicImage library="img" name="ptt.png" style="width: 60%" rendered="true"/>
+                                 
+                             </td>
+                             <td width="80%">
+                                 <center>
+                                     <font  size="6">
+                                         <B>
+                                         TAHSİLAT UYGULAMASI
+                                         
+                                         </B>
+                                     </font>  
+                             
+                             
+                             </center>
+                                 
+                             </td>
+                             
+                         </tr> 
+                         
+                     </table>                                         
+                <!--<center><font size="6">KİŞİ TELEFON UYGULAMASI</font></center>-->
+                 </ui:insert>
+            </p:layoutUnit>
+            <p:layoutUnit position="south" size="60"
+                          resizable="true" closable="true" collapsible="true">
+                 <ui:insert name="bottom">
+                <h:outputText value="Copyright @ 2015" />
+                 </ui:insert>
+            </p:layoutUnit>
+            <p:layoutUnit position="west" size="200" 
+                          resizable="true" closable="true"
+                          collapsible="true">
+                <ui:insert name="left">
+                  <h:form>
+                      
+                      <p:menu model="#{menuBean.menuModel}"/>
+                      
+                      <p/>
+                      <p:themeSwitcher style="width: 165px" value="#{kisiBean.kisi.tema}">
+                          <f:selectItem itemLabel="Tema Seçiniz" itemValue=""/>
+                          <f:selectItems value="#{kisiBean.temaListesi}"/> 
+                          <p:ajax listener="#{kisiBean.temaKaydet()}"/>
+                      
+                      </p:themeSwitcher>
+               
+                </h:form>
+                
+                </ui:insert>           
+                 
+            </p:layoutUnit>
+          
+            <p:layoutUnit id="centerUnit" position="center">
+                <ui:insert name="content">
+                <h:outputText value="Tahsilat Uygulaması"/>
+                </ui:insert>
+            </p:layoutUnit>
+        </p:layout>
+
+           
+    </h:body>
+
+</html>
