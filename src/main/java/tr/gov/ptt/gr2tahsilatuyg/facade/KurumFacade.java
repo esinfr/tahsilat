@@ -5,6 +5,8 @@
  */
 package tr.gov.ptt.gr2tahsilatuyg.facade;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -30,6 +32,28 @@ public class KurumFacade extends AbstractFacade<Kurum> {
         super(Kurum.class);
     }
     
-   
+    public int kurumIdGetir(String p_kurumAd){
+       
+       Kurum kurum = (Kurum)em.createNamedQuery("Kurum.findByAd").setParameter("ad", p_kurumAd).getSingleResult();
+       return kurum.getId().intValue();
+       
+   }
+    
+    public List<String> tamamlaKurumAdi(String p_sorgu)
+    {
+        List<String> kurumAdiListesi = new ArrayList<String>();
+        
+        List<Kurum> kurumListesi = findAll();
+        
+        for(Kurum kurum:kurumListesi)
+        {
+          if (kurum.getAd().toUpperCase().startsWith(p_sorgu.toUpperCase()))
+          {
+              kurumAdiListesi.add(kurum.getAd());
+          }
+            
+        }
+        return kurumAdiListesi;
+    }
     
 }

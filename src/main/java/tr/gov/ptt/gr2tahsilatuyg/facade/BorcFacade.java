@@ -30,7 +30,7 @@ public class BorcFacade extends AbstractFacade<Borc> {
     }
      public List<Borc> borclariGetir(Borc p_borc)
     {
-       List<Borc> borcListesi= em.createNamedQuery("Borc.findByKurumAbone").setParameter("kurumId", p_borc.getKurum().getId())
+       List<Borc> borcListesi= em.createNamedQuery("Borc.findByKurumIdAboneNo").setParameter("kurumId", p_borc.getKurum().getId())
                 .setParameter("aboneNo", p_borc.getAboneNo())
                 .getResultList();
         return borcListesi;
