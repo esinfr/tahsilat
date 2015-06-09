@@ -27,6 +27,10 @@ public class BorcBean {
     private List<Borc> borcListesi;
     
     private List<Borc> seciliBorclar;
+    
+    private Double toplam;
+    private Double alinan;
+    private Double paraUstu;
 
     public List<Borc> getBorcListesi() {
         return borcListesi;
@@ -44,9 +48,35 @@ public class BorcBean {
         borc=new Borc();
         borcListesi=new ArrayList<Borc>();
         seciliBorclar = new ArrayList<Borc>();
+        toplam=0.0;
+        alinan=0.0;
+        paraUstu=0.0;
     }
 
+    public Double getToplam() {
+        return toplam;
+    }
 
+    public void setToplam(Double toplam) {
+        this.toplam = toplam;
+    }
+
+    public Double getAlinan() {
+        return alinan;
+    }
+
+    public void setAlinan(Double alinan) {
+        this.alinan = alinan;
+    }
+
+    public Double getParaUstu() {
+        return paraUstu;
+    }
+
+    public void setParaUstu(Double paraUstu) {
+        this.paraUstu = paraUstu;
+    }
+        
     public Borc getBorc() {
         return borc;
     }
@@ -77,6 +107,24 @@ public class BorcBean {
       
         return borcService.tamamlaKurumAdi(p_sorgu);
     }
+   
+   public String hesapla()
+   {
+       toplam=0.0;
+       alinan=0.0;
+       paraUstu=0.0;
+       for(Borc borc:seciliBorclar)
+       {
+        toplam=toplam + borc.getFaturaTutar().doubleValue();
+       }
+       paraUstu();
+       
+       return "";
+   }
+   public void paraUstu()
+   {
+       paraUstu = alinan -toplam;
+   }
    
       
 //    public int kurumIdGetir(String p_kurumAd){

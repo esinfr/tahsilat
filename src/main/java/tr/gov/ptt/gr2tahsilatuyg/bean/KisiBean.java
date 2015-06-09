@@ -59,7 +59,6 @@ public class KisiBean {
         temaListesi.add("redmond");
         temaListesi.add("sunny");
         temaListesi.add("afternoon");
-        
     }
     
   
